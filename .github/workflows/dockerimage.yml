@@ -19,7 +19,7 @@ jobs:
     - uses: actions/checkout@v1
     
     - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag optiz0r/nomad:$(date +%s)
+      run: docker build . --file Dockerfile --tag optiz0r/nomad
 
     - name: Log into registry
       run: echo "${{ secrets.DOCKER_HUB_TOKEN }}" | docker login -u ${{ github.actor }} --password-stdin
