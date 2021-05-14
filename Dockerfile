@@ -39,9 +39,9 @@ RUN set -x \
   && curl -L -o nomad_${NOMAD_VERSION}_SHA256SUMS      https://releases.hashicorp.com/nomad/${NOMAD_VERSION}/nomad_${NOMAD_VERSION}_SHA256SUMS \
   && curl -L -o nomad_${NOMAD_VERSION}_SHA256SUMS.sig  https://releases.hashicorp.com/nomad/${NOMAD_VERSION}/nomad_${NOMAD_VERSION}_SHA256SUMS.sig \
   && export GNUPGHOME="$(mktemp -d)" \
-  && gpg --keyserver hkp://p80.pool.sks-keyservers.net:80 --recv-keys 91A6E7F85D05C65630BEF18951852D87348FFC4C || \
-    gpg --keyserver hkp://ipv4.pool.sks-keyservers.net:80 --recv-keys 91A6E7F85D05C65630BEF18951852D87348FFC4C || \
-    gpg --keyserver hkp://pgp.mit.edu:80 --recv-keys 91A6E7F85D05C65630BEF18951852D87348FFC4C \
+  && gpg --keyserver hkp://p80.pool.sks-keyservers.net:80 --recv-keys C874011F0AB405110D02105534365D9472D7468F || \
+    gpg --keyserver hkp://ipv4.pool.sks-keyservers.net:80 --recv-keys C874011F0AB405110D02105534365D9472D7468F || \
+    gpg --keyserver hkp://pgp.mit.edu:80 --recv-keys C874011F0AB405110D02105534365D9472D7468F \
   && gpg --batch --verify nomad_${NOMAD_VERSION}_SHA256SUMS.sig nomad_${NOMAD_VERSION}_SHA256SUMS \
   && grep nomad_${NOMAD_VERSION}_linux_amd64.zip nomad_${NOMAD_VERSION}_SHA256SUMS | sha256sum -c \
   && unzip -d /bin nomad_${NOMAD_VERSION}_linux_amd64.zip \
